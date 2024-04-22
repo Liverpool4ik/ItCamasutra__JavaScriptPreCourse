@@ -1,7 +1,7 @@
 // data
 const playlist = {
 	title: "Hip-Hop Hits",
-	coverImageUrl: "./images/mainCoverImage.jpg",
+	coverImageUrl: "./images/HipHopPlayListImages/mainCoverImage.jpg",
 	info: {
 		totalTracks: 4,
 		totalTracksDurationInSeconds: 733,
@@ -37,3 +37,35 @@ const playlist = {
 		},
 	],
 };
+
+//render
+renderPlaylist(playlist);
+
+function renderPlaylist(playlistForRendering) {
+	renderPlaylistHeader(playlistForRendering);
+	renderPlaylistTracks(playlistForRendering);
+}
+
+function renderPlaylistHeader(playlistForRendering) {
+	renderPlaylistHeaderTitle(playlistForRendering);
+	renderPlaylistHeaderCoverImage(playlistForRendering);
+}
+
+function renderPlaylistHeaderTitle(playlistForRendering) {
+	const playlistTitleElement = document.createElement("h2");
+	playlistTitleElement.append(playlistForRendering.title);
+	document.body.append(playlistTitleElement);
+}
+
+function renderPlaylistHeaderCoverImage(playlistForRendering) {
+	const playlistCoverImageElement = document.createElement("img");
+	playlistCoverImageElement.src = playlistForRendering.coverImageUrl;
+	playlistCoverImageElement.append(playlistForRendering.title);
+	document.body.append(playlistCoverImageElement);
+}
+
+function renderPlaylistTracks(playlistForRendering) {
+	const playlistElement = document.createElement("h2");
+	playlistElement.append(playlistForRendering.tracks);
+	document.body.append(playlistElement);
+}
