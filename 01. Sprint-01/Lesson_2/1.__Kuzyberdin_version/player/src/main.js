@@ -1,5 +1,4 @@
-import { anyVariable } from ".modules/data.module.js";
+import { playlists } from "./modules/data.module.js";
+import { renderPlaylistS } from "./modules/render.module.js";
 
-import { render } from ".modules/render.module.js";
-
-render(anyVariable);
+renderPlaylistS(playlists);
