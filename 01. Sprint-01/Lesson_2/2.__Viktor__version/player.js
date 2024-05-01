@@ -4,7 +4,7 @@ const playlists = [
 		playListId: "1",
 		playListInfo: {
 			title: "Hip-Hop Hits",
-			coverImageUrl: "./images/mainCoverImage.jpg",
+			coverImageUrl: "./images/HipHopPlayListImages/mainCoverImage.jpg",
 			playListTracksInfo: {
 				totalTracksCount: 4,
 				totalTracksDurationInSec: 733,
@@ -101,8 +101,15 @@ function renderAnyPlayList(anyPlayList) {
 }
 
 function renderPlayListHeader(anyPlayListHeader) {
+	const playListImgCoverElement = document.createElement("img");
+	playListImgCoverElement.src = anyPlayListHeader.coverImageUrl;
+	playListImgCoverElement.style.width = "20 px";
 	const playListHeaderElement = document.createElement("h2");
-	playListHeaderElement.append(anyPlayListHeader.title);
+	playListHeaderElement.append(
+		anyPlayListHeader.title,
+		playListImgCoverElement
+	);
+
 	document.body.append(playListHeaderElement);
 }
 function renderPlayListTracks(anyTracks) {
@@ -116,6 +123,7 @@ function renderPlayListTracks(anyTracks) {
 
 function renderTrack(anyTrack) {
 	const trackElement = document.createElement("li");
+	trackElement.style.listStyle = "none";
 	const imgCoverElement = document.createElement("img");
 	imgCoverElement.src = anyTrack.trackCoverImageUrl;
 	imgCoverElement.style.width = "50 px";
@@ -123,6 +131,10 @@ function renderTrack(anyTrack) {
 	const audioElement = document.createElement("audio");
 	audioElement.src = anyTrack.trackUrl;
 	audioElement.controls = true;
-	trackElement.append(anyTrack.trackTitle, imgCoverElement, audioElement);
+	trackElement.append(
+		imgCoverElement,
+		anyTrack.artistName + ": " + anyTrack.trackTitle,
+		audioElement
+	);
 	return trackElement;
 }
